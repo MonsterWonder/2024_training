@@ -42,7 +42,7 @@ function Es6_2() {
   const obj = { name: "Bubble", age: 2 };
   weakSet.add(obj);
   weakSet.has(obj); // true
-  weakSet.delete(obj); // 删除
+  weakSet.delete(obj); // 删除引用对象
 
   return (
     <div>
