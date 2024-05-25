@@ -44,10 +44,6 @@ function Es6_2() {
   weakSet.has(obj); // true
   weakSet.delete(obj); // 删除
 
-  for (let [key, value] of map) {
-    console.log(key, value);
-  }
-
   return (
     <div>
       <h1>{dog.bark()}</h1>
