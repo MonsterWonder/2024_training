@@ -3,18 +3,31 @@ import "./index.css";
 
 export default class List extends Component {
   render() {
+    const { users, isFirst, isLoading, err } = this.props;
     return (
       <div className="row">
-        <div className="card">
-          <a rel="noreferrer" href="http://github.com/reactjs" target="_blank">
-            <img
-              src="https://p.qqan.com/up/2020-9/16010876389657332.jpg"
-              alt="avatars"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
+        {isFirst ? (
+          <h2>输入关键字，随后点击搜索</h2>
+        ) : isLoading ? (
+          <h2>Loading...</h2>
+        ) : err ? (
+          <h2 style={{ color: "red" }}>{err}</h2>
+        ) : (
+          users.map((userObj) => {
+            return (
+              <div key={userObj.id} className="card">
+                <a rel="noreferrer" href={userObj.html_url} target="_blank">
+                  <img
+                    src={userObj.avatar_url}
+                    alt="avatars"
+                    style={{ width: "100px" }}
+                  />
+                </a>
+                <p className="card-text">{userObj.login}</p>
+              </div>
+            );
+          })
+        )}
       </div>
     );
   }
