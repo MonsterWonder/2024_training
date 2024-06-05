@@ -11,6 +11,7 @@ export default class Search extends Component {
     // 发送请求前通知 App 更新状态
     this.props.updateAppState({ isFirst: false, isLoading: true });
     // 发送网络请求，github 后端利用 cors 解决了跨域问题，所以不会产生跨域问题
+    // Promise 风格，可以写 Fetch
     axios.get(`http://localhost:5173/api1/search/users?q=${keyWord}`).then(
       (response) => {
         // Search 组件搜索的结果要传给 List 组件展示，涉及到兄弟节点传递数据，要借助父组件 App
