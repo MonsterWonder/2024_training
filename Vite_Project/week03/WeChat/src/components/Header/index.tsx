@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
 import {
   PushpinOutlined,
   LineOutlined,
@@ -26,7 +25,7 @@ export default class Header extends Component {
 
   handleMaxmize = () => {
     const { stateObj, changeStatus, toggleFullScreen } = this.props;
-    changeStatus({ isMaxmize: !stateObj.isMaxmize });
+    changeStatus({ isMaximize: !stateObj.isMaximize });
     toggleFullScreen();
   };
 
