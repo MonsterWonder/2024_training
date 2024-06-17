@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
-import Fullscreen from "./components/Fullscreen";
 import "./App.css";
 
 export default class App extends Component {
   state = {
     isMinimize: false,
-    isMaxmize: false,
+    isMaximize: false,
     isClose: false,
   };
 
@@ -19,9 +18,9 @@ export default class App extends Component {
   };
 
   toggleFullScreen = () => {
-    const { isMaxmize } = this.state;
-    isMaxmize ? this.exitFullscreen() : this.enterFullscreen();
-    // this.setState({ isMaxmize: !isMaxmize });
+    const { isMaximize } = this.state;
+    isMaximize ? this.exitFullscreen() : this.enterFullscreen();
+    // this.setState({ isMaximize: !isMaximize });
   };
 
   toggleMax = () => {
@@ -58,7 +57,7 @@ export default class App extends Component {
         ) : (
           <div
             ref={this.fullscreenRef}
-            className={stateObj.isMaxmize ? "fullscreen-content" : ""}
+            className={stateObj.isMaximize ? "fullscreen-content" : ""}
           >
             <Header
               stateObj={stateObj}

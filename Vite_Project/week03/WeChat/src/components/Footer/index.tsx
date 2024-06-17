@@ -23,7 +23,6 @@ export default class Footer extends Component {
       PubSub.publish("updateMessage", {
         userName: "user2",
         content: userInput,
-        userImg: "monster.jpg",
       });
       this.setState({ userInput: "" });
     }
