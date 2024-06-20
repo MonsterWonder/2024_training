@@ -6,9 +6,3 @@ export const add_todo = (TodoObj) => ({ type: ADD_TODO, data: TodoObj });
 
 // 接收id，通过对比待办事项的id，实现完成状态的切换
 export const toggle_todo = (id) => ({ type: TOGGLE_TODO, data: id });
-
-// 接收filter，实现待办事项的可见性
-export const change_visibility = (filter) => ({
-  type: CHANGE_VISIBILITY,
-  filter,
-});
