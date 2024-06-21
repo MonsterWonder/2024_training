@@ -1,10 +1,11 @@
 import React from "react";
+import "./index.css";
+import { Button } from "antd";
 
-function TodoList({ todos, handleChecked }) {
-  const present = todos.present ? todos.present : [];
+function TodoList({ todos, handleChecked, handleDelete }) {
   return (
     <ul style={{ listStyle: "none" }}>
-      {present.map((todo) => {
+      {todos.map((todo) => {
         return (
           <li key={todo.id}>
             <label>
@@ -14,6 +15,13 @@ function TodoList({ todos, handleChecked }) {
                 onChange={() => handleChecked(todo.id)}
               />
               <span>{todo.todo}</span>
+              <Button
+                danger
+                onClick={() => handleDelete(todo.id)}
+                className="btn"
+              >
+                删除
+              </Button>
             </label>
           </li>
         );
