@@ -1,4 +1,10 @@
-import { ADD_TODO, TOGGLE_TODO, CHECK_ALL, CLEAR_COMPLETED } from "../constant";
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  CHECK_ALL,
+  CLEAR_COMPLETED,
+  DELETE_TODO,
+} from "../constant";
 
 // 接收用户输入的待办事项，组装成 add_todo creator，向待办列表中添加新的待办事项
 // 单个 todo 的数据格式：{id, todo, completed}
@@ -15,3 +21,6 @@ export const clear_completed = (newTodos) => ({
   type: CLEAR_COMPLETED,
   data: newTodos,
 });
+
+// 删除单个todo
+export const delete_todo = (id) => ({ type: DELETE_TODO, data: id });
