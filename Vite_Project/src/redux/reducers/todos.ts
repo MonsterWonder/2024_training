@@ -1,5 +1,11 @@
 import undoable from "redux-undo";
-import { ADD_TODO, TOGGLE_TODO, CHECK_ALL, CLEAR_COMPLETED } from "../constant";
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  CHECK_ALL,
+  CLEAR_COMPLETED,
+  DELETE_TODO,
+} from "../constant";
 /**
  * 数据类型：
  * {
@@ -26,6 +32,8 @@ const todos = (previousState = iniState, action) => {
     case CHECK_ALL:
     case CLEAR_COMPLETED:
       return data;
+    case DELETE_TODO:
+      return previousState.filter((todo) => todo.id !== data);
     default:
       return previousState;
   }
