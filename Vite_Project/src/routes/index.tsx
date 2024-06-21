@@ -7,23 +7,28 @@ const createRoutes = ({
   completedTodos,
   activeTodos,
   handleChecked,
-}) => [
-  {
-    path: "/all",
-    element: <TodoList todos={allTodos} handleChecked={handleChecked} />,
-  },
-  {
-    path: "/completed",
-    element: <TodoList todos={completedTodos} handleChecked={handleChecked} />,
-  },
-  {
-    path: "/active",
-    element: <TodoList todos={activeTodos} handleChecked={handleChecked} />,
-  },
-  {
-    path: "/",
-    element: <Navigate to="/all" />,
-  },
-];
+  handleDelete,
+}) => {
+  const commonProps = { handleChecked, handleDelete };
+
+  return [
+    {
+      path: "/all",
+      element: <TodoList todos={allTodos} {...commonProps} />,
+    },
+    {
+      path: "/completed",
+      element: <TodoList todos={completedTodos} {...commonProps} />,
+    },
+    {
+      path: "/active",
+      element: <TodoList todos={activeTodos} {...commonProps} />,
+    },
+    {
+      path: "/",
+      element: <Navigate to="/all" />,
+    },
+  ];
+};
 
 export default createRoutes;
