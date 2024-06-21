@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ActionCreators as UndoRedo } from "redux-undo";
+import { Button } from "antd";
 import { check_all, clear_completed } from "../../redux/actions";
+import "./index.css";
 
 function Footer({
   todos,
@@ -25,34 +27,40 @@ function Footer({
     check_all(newTodos);
   };
 
-  return (
+  return present.length > 0 ? (
     <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={
-            completedTodos.length === present.length && present.length !== 0
-              ? true
-              : false
-          }
-          onChange={(e) => handleCheckedAll(e.target.checked)}
-        />
-      </label>
-      <span>
-        <span>已完成{completedTodos.length}</span> / 全部{present.length}
-      </span>
-      &nbsp;
-      <button onClick={handleClear}>清除已完成任务</button>
-      <div>
-        <button onClick={onUndo} disabled={!canUndo}>
-          撤销
-        </button>
+      <div className="footerTop">
+        <label>
+          <input
+            type="checkbox"
+            checked={
+              completedTodos.length === present.length && present.length !== 0
+                ? true
+                : false
+            }
+            onChange={(e) => handleCheckedAll(e.target.checked)}
+          />
+        </label>
+        <span>
+          <span>已完成{completedTodos.length}</span> / 全部{present.length}
+        </span>
         &nbsp;
-        <button onClick={onRedo} disabled={!canRedo}>
+        <Button onClick={handleClear} className="clearCompletedBtn">
+          清除已完成任务
+        </Button>
+      </div>
+      <div className="footerBottom">
+        <Button onClick={onUndo} disabled={!canUndo}>
+          撤销
+        </Button>
+        &nbsp;
+        <Button onClick={onRedo} disabled={!canRedo}>
           重做
-        </button>
+        </Button>
       </div>
     </div>
+  ) : (
+    ""
   );
 }
 
